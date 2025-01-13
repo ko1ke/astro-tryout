@@ -5,15 +5,14 @@ import Layout from "../../layouts/Layout.astro";
 const allBlogs = await getCollection("blog");
 ---
 
-<Layout>
-  <h1>BLOGs</h1>
-  <ul>
-    {
-      allBlogs.map((post) => (
-        <li>
-          <a href={`blog/${post.id}`}>{post.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
-</Layout>
+<Layout />
+<h1>BLOGs</h1>
+<ul>
+  {
+    allBlogs.map((post) => (
+      <li>
+        <a href={`blog/${post.id}`}>{post.data.title}</a>
+      </li>
+    ))
+  }
+</ul>

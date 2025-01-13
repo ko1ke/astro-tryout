@@ -27,7 +27,6 @@ export async function getStaticPaths() {
 const pokemon = Astro.props;
 ---
 
-<Layout>
-  <h1>SSG</h1>
-  <p>{pokemon.id}:{pokemon.name}</p>
-</Layout>
+<Layout />
+<h1>SSG</h1>
+<p>{pokemon.id}:{pokemon.name}</p>

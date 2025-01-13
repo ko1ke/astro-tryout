@@ -5,7 +5,6 @@ import { getPokemon } from "../../api/pokemon";
 const pokemon = await getPokemon(Astro.params.id);
 ---
 
-<Layout>
-  <h1>SSR</h1>
-  <p>{pokemon.id}:{pokemon.name}</p>
-</Layout>
+<Layout />
+<h1>SSR</h1>
+<p>{pokemon.id}:{pokemon.name}</p>
