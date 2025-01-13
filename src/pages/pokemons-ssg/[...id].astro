@@ -1,0 +1,33 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getPokemon } from "../../api/pokemon";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const ids = Array.from({ length: 10 }, (_, i) => i + 1);
+
+  const data = await Promise.all(
+    ids.map(async (id) => {
+      const pokemon = await getPokemon(id.toString());
+      return {
+        params: {
+          id: id.toString(),
+        },
+        props: {
+          id: pokemon.id,
+          name: pokemon.name,
+        },
+      };
+    }),
+  );
+  return data;
+}
+
+const pokemon = Astro.props;
+---
+
+<Layout>
+  <h1>SSG</h1>
+  <p>{pokemon.id}:{pokemon.name}</p>
+</Layout>

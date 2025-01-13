@@ -6,5 +6,6 @@ const pokemon = await getPokemon(Astro.params.id);
 ---
 
 <Layout>
-  <h1>{pokemon.name}</h1>
+  <h1>SSR</h1>
+  <p>{pokemon.id}:{pokemon.name}</p>
 </Layout>
