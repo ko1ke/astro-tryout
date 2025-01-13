@@ -1,0 +1,10 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getPokemon } from "../../api/pokemon";
+
+const pokemon = await getPokemon(Astro.params.id);
+---
+
+<Layout>
+  <h1>{pokemon.name}</h1>
+</Layout>
