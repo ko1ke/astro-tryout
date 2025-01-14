@@ -1,15 +1,13 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { getPokemon } from "../../api/pokemon";
+import Layout from "../../layouts/Layout.astro"
+import { getPokemon } from "../../api/pokemon"
 
-export const prerender = true;
+export const prerender = true
 
 export async function getStaticPaths() {
-  const ids = Array.from({ length: 10 }, (_, i) => i + 1);
-
-  const data = await Promise.all(
-    ids.map(async (id) => {
-      const pokemon = await getPokemon(id.toString());
+  return await Promise.all(
+    Array.from({ length: 10 }, (_, i) => i + 1).map(async (id) => {
+      const pokemon = await getPokemon(id.toString())
       return {
         params: {
           id: id.toString(),
@@ -18,13 +16,12 @@ export async function getStaticPaths() {
           id: pokemon.id,
           name: pokemon.name,
         },
-      };
+      }
     }),
-  );
-  return data;
+  )
 }
 
-const pokemon = Astro.props;
+const pokemon = Astro.props
 ---
 
 <Layout />
